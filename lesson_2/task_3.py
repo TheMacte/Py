@@ -15,6 +15,4 @@ def revers(num_in, tmp=None, cnt=None):
     return revers(num_in // 10, tmp, cnt)
 
 
-print(revers(348060))
-print(revers(3))
-print(revers(304))
+print(revers(int(input('Введите натуральное число: '))))
