@@ -26,7 +26,7 @@ def calc():
                 if num_2 == '0':
                     print('На нуль может делить только Чак Норис')
                 else:
-                print(float(num_1) / float(num_2))
+                    print(float(num_1) / float(num_2))
     else:
         print('Я не знаю такой операции...')
     return calc()
