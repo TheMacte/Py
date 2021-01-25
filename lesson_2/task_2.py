@@ -16,4 +16,4 @@ def nut_num(into, reg=0, irreg=0):
         return f'Чётных: {reg}, нечётных {irreg}'
 
 
-print(nut_num(int(input('Введите число n: '))))
+print(nut_num(int(input('Введите натуральное число: '))))
