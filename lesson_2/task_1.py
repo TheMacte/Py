@@ -15,8 +15,6 @@ def calc():
     if func == '+' or func == '-' or func == '*' or func == '/':
         num_1 = input('Введите первое число ')
         num_2 = input('Введите второе число ')
-        if func == '/' and num_2 == '0':
-            print('На нуль может делить только Чак Норис')
         else:
             if func == '+':
                 print(float(num_1) + float(num_2))
@@ -25,6 +23,9 @@ def calc():
             elif func == '*':
                 print(float(num_1) * float(num_2))
             else:
+                if num_2 == '0':
+                    print('На нуль может делить только Чак Норис')
+                else:
                 print(float(num_1) / float(num_2))
     else:
         print('Я не знаю такой операции...')
