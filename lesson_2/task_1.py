@@ -18,18 +18,17 @@ def calc():
     if func == '+' or func == '-' or func == '*' or func == '/':
         num_1 = input('Введите первое число ')
         num_2 = input('Введите второе число ')
+        if func == '+':
+            print(float(num_1) + float(num_2))
+        elif func == '-':
+            print(float(num_1) - float(num_2))
+        elif func == '*':
+            print(float(num_1) * float(num_2))
         else:
-            if func == '+':
-                print(float(num_1) + float(num_2))
-            elif func == '-':
-                print(float(num_1) - float(num_2))
-            elif func == '*':
-                print(float(num_1) * float(num_2))
+            if num_2 == '0':
+                print('На нуль может делить только Чак Норис')
             else:
-                if num_2 == '0':
-                    print('На нуль может делить только Чак Норис')
-                else:
-                    print(float(num_1) / float(num_2))
+                print(float(num_1) / float(num_2))
     else:
         print('Я не знаю такой операции...')
     return calc()

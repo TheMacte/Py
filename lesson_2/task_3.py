@@ -4,7 +4,7 @@
 """
 
 
-def revers(num_in, tmp=None, cnt=None):
+def revers(num_in, tmp=None, cnt=None) -> int:
     if cnt == 1:
         return tmp
     elif cnt is None:
