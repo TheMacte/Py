@@ -8,6 +8,7 @@ MIN_ITEM = 0
 MAX_ITEM = 100
 array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
 
+assert SIZE >= 1, 'Только для SIZE >= 1'
 print(array)
 
 # max_min_info = [[id_max, id_min], [value_max, value_min]]

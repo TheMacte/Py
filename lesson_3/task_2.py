@@ -12,17 +12,13 @@ MAX_ITEM = 100
 array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
 
 print(array)
-
 spam = []
 
-"""
-Логичный путь
-
+# Логичный способ, на больших данных оказался быслрее Питоновского
 for i, num in enumerate(array):
     if num % 2 == 0:
         spam.append(i)
-"""
 
-# Питоновский путь
-spam = [i for i, x in enumerate(array) if x % 2 == 0]
+# Питоновский способ
+# spam = [i for i, x in enumerate(array) if x % 2 == 0]
 print(spam)
