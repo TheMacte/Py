@@ -68,7 +68,7 @@ def main2(n):  # выворачивую через рекурсию
     max_item = 100
     array = [random.randint(min_item, max_item) for _ in range(size)]
 
-    def id_max_id_min(arr, cnt=0, id_max=0, id_min=0, value_max=0, value_min=0):
+    def _id_max_id_min(arr, cnt=0, id_max=0, id_min=0, value_max=0, value_min=0):
         if cnt == len(arr):
             return id_max, id_min
         else:
@@ -82,9 +82,9 @@ def main2(n):  # выворачивую через рекурсию
                 value_min = arr[cnt]
                 id_min = cnt
             cnt += 1
-            return id_max_id_min(arr, cnt, id_max, id_min, value_max, value_min)
+            return _id_max_id_min(arr, cnt, id_max, id_min, value_max, value_min)
 
-    id_mx, id_mn = id_max_id_min(array)
+    id_mx, id_mn = _id_max_id_min(array)
     array[id_mx], array[id_mn] = array[id_mn], array[id_mx]
     return array
 
@@ -122,7 +122,8 @@ def main3(n):
     min_item = 0
     max_item = 100
     array = [random.randint(min_item, max_item) for _ in range(size)]
-    array[array.index(max(array))], array[array.index(min(array))] = array[array.index(min(array))], array[array.index(max(array))]
+    array[array.index(max(array))], array[array.index(min(array))] = \
+        array[array.index(min(array))], array[array.index(max(array))]
 
     return array
 
@@ -156,7 +157,7 @@ cProfile.run('main3(1_000_000)')
 # РЕЗУЛЬТАТ АНАЛИЗА
 """
 Везде замеры проводились с N = 100, 200, 400, 800
-O(1) - линейное, т.к. с увеличением N в 2 раза время выполнения увеличивалось примерно в двое
+Во всех случаях O(n) - линейное, т.к. с увеличением N в 2 раза время выполнения увеличивалось примерно в двое
 Простой цикл показал время близкое к использованию встроенных функций.
 Рекурсия показала заметно худшее время выполнения.
 Замеры cProfile не показывают каких либо мест, которые можно улучшить, т.к. cProfile бъёт выполняемый од по функциям.    
