@@ -1,15 +1,113 @@
 """
- Для оценки «Отлично» необходимо выполнить оба задания
- (умножение в столбик для тех кто справился со сложением в столбик).
-
  2. Написать программу сложения и умножения двух шестнадцатеричных чисел.
  При этом каждое число представляется как коллекция, элементы которой — цифры числа.
  Например, пользователь ввёл A2 и C4F.
  Нужно сохранить их как [‘A’, ‘2’] и [‘C’, ‘4’, ‘F’] соответственно.
  Сумма чисел из примера: [‘C’, ‘F’, ‘1’], произведение - [‘7’, ‘C’, ‘9’, ‘F’, ‘E’].
 """
-from collections import defaultdict
+from collections import deque
 
 
-c = defaultdict(list)
-a = list(input('Введите первое шестнадцатиричное число '))
+def hex_sum(num_1, num_2):
+    """
+    :param num_1: Шестнадцатириное число в виде строки, к которому будем прибавлять
+    :param num_2: Шестнадцатириное число в виде строки, которое будем прибавлять
+    :return: Шестнадцатириное число в виде списка, которое получится в результате
+    """
+    my_connector = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8,
+                    '9': 9, 'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}  # Формирую словарь
+    num_1, num_2, answer = deque(num_1), deque(num_2), deque()
+
+    max_size = 0  # максимальная длинна
+
+    if len(num_1) > len(num_2):  # Для всех чисел одинаковую разрядность
+        for _ in range(len(num_1)):
+            max_size += 1
+            if len(num_1) < max_size:
+                num_1.appendleft([0])
+            if len(num_2) < max_size:
+                num_2.appendleft([0])
+    else:
+        for _ in range(len(num_2)):
+            max_size += 1
+            if len(num_2) < max_size:
+                num_2.appendleft('0')
+            if len(num_1) < max_size:
+                num_1.appendleft('0')
+
+    tmp = 0  # То что в детстве называлось "1 в уме".
+
+    for _ in range((max_size - 1), -1, -1):
+        spam = my_connector[num_1.pop()] + my_connector[num_2.pop()] + tmp
+        if spam < 15:
+            answer.appendleft(spam)
+            tmp = 0
+        else:
+            answer.appendleft(spam - 16)
+            tmp = 1
+    else:
+        if tmp == 1:
+            answer.appendleft('1')
+
+    for _ in range(len(answer)):
+        n = answer.pop()
+        for d in my_connector:
+            if my_connector[d] == n:
+                answer.appendleft(d)
+
+    return answer
+
+
+def hex_mlt(num_1, num_2):
+    """
+    :param num_1: Шестнадцатириное число в виде строки, к которому будем прибавлять
+    :param num_2: Шестнадцатириное число в виде строки, которое будем прибавлять
+    :return: Шестнадцатириное число в виде списка, которое получится в результате
+    """
+    my_connector = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8,
+                    '9': 9, 'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}  # Формирую словарь
+    num_1, num_2, answer = deque(num_1), deque(num_2), deque()
+
+    max_size = 0  # максимальная длинна
+
+    if len(num_1) > len(num_2):  # Для всех чисел одинаковую разрядность
+        for _ in range(len(num_1)):
+            max_size += 1
+            if len(num_1) < max_size:
+                num_1.appendleft([0])
+            if len(num_2) < max_size:
+                num_2.appendleft([0])
+    else:
+        for _ in range(len(num_2)):
+            max_size += 1
+            if len(num_2) < max_size:
+                num_2.appendleft('0')
+            if len(num_1) < max_size:
+                num_1.appendleft('0')
+
+    tmp = 0  # То что в детстве называлось "1 в уме".
+
+    for _ in range((max_size - 1), -1, -1):
+        spam = my_connector[num_1.pop()] + my_connector[num_2.pop()] + tmp
+        if spam < 15:
+            answer.appendleft(spam)
+            tmp = 0
+        else:
+            answer.appendleft(spam - 16)
+            tmp = 1
+    else:
+        if tmp == 1:
+            answer.appendleft('1')
+
+    for _ in range(len(answer)):
+        n = answer.pop()
+        for d in my_connector:
+            if my_connector[d] == n:
+                answer.appendleft(d)
+
+    return answer
+
+
+#print(hex_sum(input('Первое шестнадцатиричное число '), input('Второе шестнадцатиричное число ')))
+
+print(hex_mlt(input('Первое шестнадцатиричное число '), input('Второе шестнадцатиричное число ')))
