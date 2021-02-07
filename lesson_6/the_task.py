@@ -74,8 +74,8 @@ a = revers(EXAMPLE_INPUT)
 b = revers_better(EXAMPLE_INPUT)
 c = revers_another(str(EXAMPLE_INPUT))  # string, т.к. изначально был print, считаю это допустимым отступлением
 
-# Python 3.8.5, 64 bit
-show(a)   # Только переменная
+# Python 3.8.5, UBUNTU 20.04, 64 bit
+show(a)   # Рассмотр строк
 print(f'Объём затраченной памяти = {spam - sys.getsizeof(a)}')  # Объём затраченной памяти = 80
 spam = 0  # Обнуляем переменную для замеров
 show(b)   # Список
