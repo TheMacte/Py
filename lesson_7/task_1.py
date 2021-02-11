@@ -43,7 +43,6 @@ def decreasing_bubble(arr):
             for j in range(start, finish):
                 if arr[j + 1] > arr[j]:
                     arr[j], arr[j + 1] = arr[j + 1], arr[j]
-            print(n, arr)
             n += 1
     return arr
 
