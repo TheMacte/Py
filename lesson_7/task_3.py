@@ -25,4 +25,3 @@ rnd_arr = [randint(MIN_ITEM, MAX_ITEM) for _ in range(2 * m + 1)]
 
 print(rnd_arr)
 print(median(rnd_arr))
-
